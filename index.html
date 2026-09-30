@@ -72,10 +72,6 @@ header .wrap{position:relative;z-index:2}
 
 /* sections */
 section{padding:66px 0 74px;border-top:1px solid var(--line-soft)}
-@media(min-width:861px){
-  section p{max-width:46em}
-  .lead{max-width:38em}
-}
 @media(min-width:620px){
   #quiz{padding-bottom:38px}
   #profile{padding-top:38px;border-top-color:rgba(51,39,31,.08)}
@@ -157,6 +153,12 @@ section p{max-width:34em}
 .person .nm b{font-size:18px;font-weight:600}
 .person .nm em{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft)}
 .person p{margin:0;font-size:14.5px;max-width:32em}
+
+@media(min-width:861px){
+  section p{max-width:none}
+  .lead{max-width:52em}
+  .person p{max-width:none}
+}
 .person.lead-figure{border-left:2px solid var(--lamp);padding-left:15px;grid-template-columns:94px 1fr}
 #garden .person.lead-figure{border-left-color:var(--fire)}
 .portrait{width:100%;aspect-ratio:3/4;border:1px solid var(--line);overflow:hidden;background:linear-gradient(160deg,#fff,rgba(51,39,31,.09));display:grid;place-items:center}
@@ -224,9 +226,9 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
   <h2 class="h2">당신은 어느 쪽 불빛인가</h2>
   <p class="lead">여덟 개의 상황이 주어진다. 정답은 없고, 사막에서 오래 버티는 방식만 다르다. 마지막에 당신이 설 자리가 정해진다.</p>
 
-  <div class="player" data-track="admission" data-name="Two Lights">
+  <div class="player" data-track="admission" data-name="[good night]" data-src="assets/good_night.mp3">
     <button class="play" aria-label="재생">▶</button>
-    <div class="meta"><div class="tname">Two Lights</div><div class="thint">the.l.s. 테마 · 트랙 없음</div></div>
+    <div class="meta"><div class="tname">[good night]</div><div class="thint">the.l.s. 테마</div></div>
     <input type="range" class="seek" value="0" min="0" max="1000" aria-label="재생 위치" disabled>
     <span class="time">0:00</span>
     <button class="load">파일</button>
