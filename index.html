@@ -67,8 +67,102 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:30%;height:1px;
 @media (prefers-reduced-motion: reduce){.glow{animation:none}}
 header .wrap{position:relative;z-index:2}
 .title{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:clamp(36px,10vw,74px);letter-spacing:.2em;line-height:1.05;margin-bottom:18px}
-.tagline{font-size:clamp(15px,4.2vw,18px);max-width:25em;color:#f2e7de}
-.subline{color:rgba(242,231,222,.72);font-size:13.5px;max-width:27em}
+.tagline{font-size:clamp(15px,4.2vw,18px);max-width:none;color:#f2e7de}
+.subline{color:rgba(242,231,222,.72);font-size:13.5px;max-width:none}
+
+
+/* world navigation banner */
+.world-banner{
+  position:relative;
+  display:block;
+  margin:0 0 34px;
+  padding:22px 22px 20px;
+  color:#f2e7de;
+  text-decoration:none;
+  overflow:hidden;
+  border:1px solid rgba(51,39,31,.28);
+  background:
+    radial-gradient(70% 150% at 8% 100%,rgba(143,179,170,.28),transparent 58%),
+    radial-gradient(65% 140% at 92% 0%,rgba(176,54,47,.30),transparent 58%),
+    linear-gradient(105deg,#211a17 0%,#30231d 55%,#422821 100%);
+  box-shadow:0 8px 24px rgba(51,39,31,.08);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.world-banner::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(242,231,222,.55),transparent);
+}
+.world-banner::after{
+  content:"";
+  position:absolute;
+  width:170px;height:170px;
+  right:-72px;bottom:-115px;
+  border-radius:50%;
+  border:1px solid rgba(242,231,222,.14);
+  box-shadow:0 0 0 18px rgba(242,231,222,.035),0 0 0 36px rgba(242,231,222,.025);
+}
+.world-banner:hover,.world-banner:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(176,54,47,.5);
+  box-shadow:0 12px 30px rgba(51,39,31,.14);
+  outline:none;
+}
+.world-banner .wb-kicker{
+  position:relative;z-index:1;
+  display:block;
+  margin-bottom:7px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.22em;
+  color:rgba(242,231,222,.58);
+}
+.world-banner .wb-title{
+  position:relative;z-index:1;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:5px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:clamp(17px,4vw,23px);
+  letter-spacing:.13em;
+}
+.world-banner .wb-title strong{font-weight:400}
+.world-banner .wb-title em{
+  font-style:normal;
+  font-size:10px;
+  letter-spacing:.08em;
+  color:#d9b6a8;
+}
+.world-banner .wb-bottom{
+  position:relative;z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.world-banner .wb-copy{
+  margin:0;
+  max-width:38em;
+  font-size:12.5px;
+  line-height:1.65;
+  color:rgba(242,231,222,.72);
+}
+.world-banner .wb-cta{
+  flex:none;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.12em;
+  color:#f2e7de;
+  white-space:nowrap;
+}
+@media(max-width:560px){
+  .world-banner{padding:18px 17px 17px}
+  .world-banner .wb-bottom{align-items:flex-start;flex-direction:column;gap:10px}
+  .world-banner .wb-copy{font-size:12px}
+}
 
 /* sections */
 section{padding:66px 0 74px;border-top:1px solid var(--line-soft)}
@@ -302,6 +396,15 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
 </div></section>
 
 <section id="world"><div class="wrap">
+  <a class="world-banner" href="https://thelongsleep.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="THE LONG SLEEP 전체보기로 이동">
+    <span class="wb-kicker">WORLD ARCHIVE · PLATFORM INDEX</span>
+    <span class="wb-title"><strong>THE LONG SLEEP</strong><em>전체보기</em></span>
+    <span class="wb-bottom">
+      <span class="wb-copy">각 플랫폼의 세계와 인물, 이야기를 한곳에서 확인하세요.</span>
+      <span class="wb-cta">[ 전체보기 ↗ ]</span>
+    </span>
+  </a>
+
   <p class="kicker">THE LONG SLEEP</p>
   <h2 class="h2">죽음보다 오래 남는 잠</h2>
   <p class="lead">생존자들이 임의로 붙인 이름이다. 학명도 기록도 없다. 숙주를 죽이지 않고 오래 살려 두는 기생성 병원체로 추정된다.</p>
