@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>the.l.s. — 사막에 남은 두 개의 불빛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ece4;
+  --paper-2:#ece0d5;
+  --haven:#e2e7e4;
+  --haven-2:#d7dedb;
+  --garden:#f3ded7;
+  --garden-2:#edd0c8;
+  --night:#241c19;
+  --ink:#33271f;
+  --ink-soft:#6f5c51;
+  --clay:#9c5a4e;
+  --lamp:#4f6f68;
+  --fire:#b0362f;
+  --gold:#96682b;
+  --line:rgba(51,39,31,.2);
+  --line-soft:rgba(51,39,31,.11);
+  --maxw:860px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --paper:#f4ece4; } }
+:root[data-theme="dark"]{ --paper:#f4ece4; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(54px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",Roboto,sans-serif;
+  font-size:14.5px;line-height:1.85;letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.3}
+p{margin:0 0 1.05em}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--ink-soft)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(244,236,228,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:16px;align-items:center;height:54px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;color:var(--ink-soft);text-decoration:none;white-space:nowrap;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+nav a:hover,nav a:focus-visible{color:var(--ink);border-bottom-color:var(--clay)}
+nav .mark{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.18em;color:var(--ink);margin-right:4px}
+
+/* hero */
+header{position:relative;min-height:62vh;display:flex;align-items:flex-end;padding:84px 0 48px;overflow:hidden;color:#f2e7de;
+  background:radial-gradient(85% 55% at 22% 98%, rgba(140,178,169,.3), transparent 62%),
+             radial-gradient(80% 50% at 84% 94%, rgba(198,86,72,.34), transparent 60%),
+             linear-gradient(#1c1613 0%, #2a201b 60%, #3b2b22 100%)}
+header::after{content:"";position:absolute;left:0;right:0;bottom:30%;height:1px;background:linear-gradient(90deg,transparent,rgba(242,231,222,.3),transparent)}
+.glow{position:absolute;bottom:21%;width:min(170px,30vw);height:min(170px,30vw);border-radius:50%;filter:blur(36px);opacity:.5}
+.glow.a{left:12%;background:#8fb3aa;animation:pulse 7s ease-in-out infinite}
+.glow.b{right:10%;background:#c8564a;animation:pulse 9s ease-in-out infinite .8s}
+@keyframes pulse{0%,100%{opacity:.38;transform:scale(1)}50%{opacity:.68;transform:scale(1.12)}}
+@media (prefers-reduced-motion: reduce){.glow{animation:none}}
+header .wrap{position:relative;z-index:2}
+.title{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:clamp(36px,10vw,74px);letter-spacing:.2em;line-height:1.05;margin-bottom:18px}
+.tagline{font-size:clamp(15px,4.2vw,18px);max-width:25em;color:#f2e7de}
+.subline{color:rgba(242,231,222,.72);font-size:13.5px;max-width:27em}
+
+/* sections */
+section{padding:66px 0 74px;border-top:1px solid var(--line-soft)}
+@media(min-width:861px){
+  section p{max-width:46em}
+  .lead{max-width:38em}
+}
+@media(min-width:620px){
+  #quiz{padding-bottom:38px}
+  #profile{padding-top:38px;border-top-color:rgba(51,39,31,.08)}
+}
+#quiz{background:var(--paper-2)}
+#profile{background:var(--paper)}
+#world{background:var(--paper)}
+#haven{background:linear-gradient(var(--haven),var(--haven-2))}
+#garden{background:linear-gradient(var(--garden),var(--garden-2))}
+#signal{background:var(--night);color:#eadfd6;border-top:none}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.26em;color:var(--ink-soft);margin-bottom:10px}
+#signal .kicker{color:rgba(234,223,214,.6)}
+.h2{font-size:clamp(24px,6vw,33px);font-weight:600;letter-spacing:-.02em;margin-bottom:9px}
+.lead{color:var(--ink-soft);max-width:32em;margin-bottom:32px;font-size:14.5px}
+#signal .lead{color:rgba(234,223,214,.7)}
+section p{max-width:34em}
+
+/* audio */
+.player{display:flex;align-items:center;gap:11px;flex-wrap:wrap;border:1px solid var(--line);border-radius:2px;padding:10px 12px;margin-bottom:32px;background:rgba(255,255,255,.45)}
+.player button{width:32px;height:32px;flex:none;border-radius:50%;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:12px;line-height:1;display:grid;place-items:center;transition:background .2s}
+.player button:hover:not(:disabled){background:var(--paper-2)}
+.player button:disabled{opacity:.4;cursor:default}
+.player .meta{flex:1 1 150px;min-width:0}
+.player .tname{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player .thint{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-soft)}
+.player input[type=range]{flex:1 1 140px;min-width:100px;accent-color:var(--clay);height:3px}
+.player .time{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);flex:none}
+.player .load{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;cursor:pointer;border:1px solid var(--line);border-radius:2px;padding:6px 9px;color:var(--ink-soft);width:auto;height:auto;background:#fff}
+.player .load:hover{color:var(--ink)}
+
+/* quiz */
+.quiz-card{border:1px solid var(--line);background:#fbf6f1;padding:24px 20px 20px}
+.qcount{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:var(--ink-soft);margin-bottom:6px}
+.qbar{height:2px;background:rgba(51,39,31,.14);margin-bottom:20px}
+.qbar i{display:block;height:100%;background:var(--clay);width:0;transition:width .35s ease}
+.qtext{font-size:18px;line-height:1.55;margin-bottom:20px;font-weight:500}
+.opts{display:grid;gap:9px}
+.opt{text-align:left;font-family:inherit;font-size:14px;line-height:1.6;color:var(--ink);background:#fff;border:1px solid var(--line-soft);border-left:2px solid var(--clay);padding:12px 14px;cursor:pointer;transition:background .18s,transform .18s}
+.opt:hover,.opt:focus-visible{background:var(--paper-2)}
+.opt:active{transform:translateX(2px)}
+.result{display:none}
+.result.show{display:block}
+.scale{display:flex;height:32px;margin:16px 0 8px;border:1px solid var(--line)}
+.scale span{display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;transition:flex-basis .6s ease;white-space:nowrap;overflow:hidden}
+.scale .s-h{background:#cfdcd8;color:#26433c}
+.scale .s-r{background:#f0cdc4;color:#7d2620}
+.verdict{font-size:20px;font-weight:600;margin:14px 0 6px}
+.assign{border:1px solid var(--line-soft);padding:15px;margin-top:16px;background:#fff}
+.assign dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:var(--ink-soft)}
+.assign dd{margin:2px 0 13px;font-size:14px}
+.assign dd:last-child{margin-bottom:0}
+.again{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;background:none;border:none;border-bottom:1px solid var(--clay);color:var(--ink-soft);cursor:pointer;padding:2px 0;margin-top:16px}
+.again:hover{color:var(--ink)}
+
+/* stages */
+.stages{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(226,231,228,.72) 0%,rgba(251,246,241,.92) 34%,rgba(244,220,213,.86) 100%);overflow:hidden}
+.stages::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(79,111,104,.10),transparent 42%,rgba(176,54,47,.12));pointer-events:none}
+.stages .stage{position:relative}
+.stage b{background:linear-gradient(180deg,#4f6f68 0%,#96682b 52%,#b0362f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stage:nth-child(1) b{opacity:.82}
+.stage:nth-child(2) b{opacity:.88}
+.stage:nth-child(3) b{opacity:.93}
+.stage:nth-child(4) b,.stage:nth-child(5) b{opacity:1}
+.stage{display:grid;grid-template-columns:78px 1fr;gap:13px;padding:12px 14px;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.stage:last-child{border-bottom:none}
+.stage b{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:11.5px;letter-spacing:.04em;color:var(--gold)}
+.stage span{font-size:14px}
+.stage:nth-child(4) b,.stage:nth-child(5) b{color:transparent}
+.pair{display:grid;gap:13px;margin:24px 0}
+@media(min-width:620px){.pair{grid-template-columns:1fr 1fr}}
+.box{border:1px solid var(--line-soft);padding:16px;background:#fbf6f1}
+.box h3{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;margin-bottom:7px;color:var(--ink-soft)}
+.box p{margin:0;font-size:14px}
+
+/* people */
+.person{padding:22px 0;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:84px 1fr;gap:17px;align-items:start}
+.person:last-of-type{border-bottom:none}
+.person .nm{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+.person .nm b{font-size:18px;font-weight:600}
+.person .nm em{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft)}
+.person p{margin:0;font-size:14.5px;max-width:32em}
+.person.lead-figure{border-left:2px solid var(--lamp);padding-left:15px;grid-template-columns:94px 1fr}
+#garden .person.lead-figure{border-left-color:var(--fire)}
+.portrait{width:100%;aspect-ratio:3/4;border:1px solid var(--line);overflow:hidden;background:linear-gradient(160deg,#fff,rgba(51,39,31,.09));display:grid;place-items:center}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait span{font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:.1em;color:rgba(51,39,31,.3)}
+.quote{font-size:16px;line-height:1.7;padding-left:15px;border-left:2px solid var(--clay);margin:22px 0;font-weight:500}
+.card-list{display:grid;gap:11px;margin-top:20px}
+.card{border:1px solid var(--line-soft);padding:14px 16px;background:rgba(255,255,255,.62)}
+.card b{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;display:block;margin-bottom:4px}
+.card span{font-size:14px}
+
+.banner{margin:0 0 26px;border:1px solid var(--line);overflow:hidden;line-height:0}
+.banner img{width:100%;height:clamp(120px,26vw,190px);object-fit:cover;display:block}
+.banner figcaption{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink-soft);line-height:1.6;padding:7px 10px;background:rgba(255,255,255,.5)}
+.banner.tall img{height:clamp(150px,32vw,230px)}
+
+/* profile form */
+.tabs{display:flex;border:1px solid var(--line);border-bottom:none}
+.tabs button{flex:1;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;padding:11px 8px;background:#e7dbd0;border:none;border-right:1px solid var(--line);color:var(--ink-soft);cursor:pointer}
+.tabs button:last-child{border-right:none}
+.tabs button[aria-selected=true]{background:#fbf6f1;color:var(--ink);font-weight:500}
+.sheet{border:1px solid var(--line);background:#fbf6f1;padding:18px 16px}
+.sheet pre{margin:0;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:2;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.sheet pre i{font-style:normal;color:rgba(51,39,31,.45)}
+.sheet .copy{margin-top:16px;margin-right:8px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;background:#fff;border:1px solid var(--line);color:var(--ink);padding:9px 15px;cursor:pointer}
+.sheet .copy:hover{background:var(--paper-2)}
+.hidden{display:none}
+
+/* signal */
+.signal-box{border:1px solid rgba(234,223,214,.22);padding:28px 20px;text-align:center}
+.spinner{width:46px;height:46px;margin:0 auto 20px;border:1px solid rgba(234,223,214,.25);border-top-color:#c8877a;border-radius:50%;animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.spinner{animation-duration:9s}}
+#log{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:rgba(234,223,214,.66);min-height:5.4em;text-align:left;max-width:30em;margin:0 auto}
+#log div{opacity:0;animation:fade .5s forwards}
+@keyframes fade{to{opacity:1}}
+.sig-title{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.2em;margin-bottom:8px}
+footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-align:center}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="mark">THE.L.S.</span>
+  <a href="#quiz">적성 판정</a>
+  <a href="#profile">프로필 양식</a>
+  <a href="#world">세계</a>
+  <a href="#haven">HAVEN</a>
+  <a href="#garden">ROSE GARDEN</a>
+  <a href="#signal">신호</a>
+</div></nav>
+
+<header>
+  <div class="glow a"></div><div class="glow b"></div>
+  <div class="wrap">
+    <h1 class="title">THE.L.S.</h1>
+    <p class="tagline">밤의 사막에 불빛은 두 군데뿐이다. 하나는 땅 밑에서 새어 나오고, 하나는 협곡에서 타오른다.</p>
+    <p class="subline">감염병 이후의 미국 남서부. 규칙이 남은 곳과 규칙을 버린 곳, 당신은 어느 쪽 불빛으로 걸어갈 것인가.</p>
+  </div>
+</header>
+
+<section id="quiz"><div class="wrap">
+  <p class="kicker">ADMISSION TEST</p>
+  <h2 class="h2">당신은 어느 쪽 불빛인가</h2>
+  <p class="lead">여덟 개의 상황이 주어진다. 정답은 없고, 사막에서 오래 버티는 방식만 다르다. 마지막에 당신이 설 자리가 정해진다.</p>
+
+  <div class="player" data-track="admission" data-name="Two Lights">
+    <button class="play" aria-label="재생">▶</button>
+    <div class="meta"><div class="tname">Two Lights</div><div class="thint">the.l.s. 테마 · 트랙 없음</div></div>
+    <input type="range" class="seek" value="0" min="0" max="1000" aria-label="재생 위치" disabled>
+    <span class="time">0:00</span>
+    <button class="load">파일</button>
+  </div>
+
+  <div class="quiz-card">
+    <div id="stage">
+      <p class="qcount" id="qcount">질문 1 / 8</p>
+      <div class="qbar"><i id="qbar"></i></div>
+      <p class="qtext" id="qtext"></p>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div class="result" id="result">
+      <p class="qcount">판정 완료</p>
+      <div class="scale"><span class="s-h" id="sH">HAVEN</span><span class="s-r" id="sR">ROSE GARDEN</span></div>
+      <p class="verdict" id="verdict"></p>
+      <p id="rdesc" style="color:var(--bone-dim)"></p>
+      <dl class="assign">
+        <dt>배정</dt><dd id="rrole"></dd>
+        <dt>첫 장면</dt><dd id="rscene"></dd>
+        <dt>주의</dt><dd id="rwarn"></dd>
+      </dl>
+      <button class="again" id="fill">판정 결과로 양식 채우기</button>
+      <button class="again" id="again" style="margin-left:18px">다시 판정</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="profile"><div class="wrap">
+  <p class="kicker">CHARACTER SHEET</p>
+  <h2 class="h2">당신을 적어 넣는 칸</h2>
+  <p class="lead">유저 프로필로 붙여 넣고 시작할 수 있습니다.</p>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-sheet="h">HAVEN</button>
+    <button role="tab" aria-selected="false" data-sheet="r">ROSE GARDEN</button>
+  </div>
+
+  <div class="sheet" id="sheet-h">
+<pre>[이름] <span data-f="name"></span>
+[나이] <span data-f="age"></span>
+[외형] <span data-f="look">한두 줄. 눈에 띄는 특징 위주</span>
+[합류] <span data-f="join">HAVEN에 들어온 시점과 경위</span>
+[역할] <span data-f="role">정찰 / 의료 보조 / 정비 / 배급 / 없음</span>
+[감염] <span data-f="inf">비감염 · 감염자 · 면역자 중 택1</span>
+[징후] <span data-f="sign">감염자라면 겉으로 드러나는 증상</span>
+[숨기는 것] <span data-f="hide">셸터에 말하지 않은 사실</span>
+[거리감] <span data-f="rel">주요 인물과의 현재 관계. 상관과 부하 / 오래된 동료 / 어제 실려 온 낯선 사람</span>
+[할 수 있는 것] <span data-f="skill">총기 / 기계 / 응급처치 / 운전 / 협상</span>
+[지니고 있는 것] <span data-f="item">붕괴 이전부터 버리지 못한 물건 하나</span></pre>
+    <button class="copy" data-target="sheet-h">양식 복사</button>
+    <button class="copy dice" data-target="sheet-h" data-side="h">랜덤 배정</button>
+  </div>
+
+  <div class="sheet hidden" id="sheet-r">
+<pre>[이름] <span data-f="name"></span>
+[나이] <span data-f="age"></span>
+[외형] <span data-f="look">한두 줄. 눈에 띄는 특징 위주</span>
+[합류] <span data-f="join">로즈가든에 들어온 시점과 경위</span>
+[역할] <span data-f="role">선수 / 손님 / 일꾼 / 포로 / 없음</span>
+[감염] <span data-f="inf">비감염 · 감염자 · 면역자 중 택1</span>
+[징후] <span data-f="sign">감염자라면 겉으로 드러나는 증상</span>
+[숨기는 것] <span data-f="hide">협곡에서 말하지 않은 사실</span>
+[거리감] <span data-f="rel">주요 인물과의 현재 관계. 여왕의 눈에 든 사람 / 빚쟁이 / 어제 끌려온 낯선 사람</span>
+[할 수 있는 것] <span data-f="skill">총기 / 기계 / 응급처치 / 운전 / 협상</span>
+[지니고 있는 것] <span data-f="item">붕괴 이전부터 버리지 못한 물건 하나</span>
+[로즈가든의 빚] <span data-f="debt">여기서 살아남으며 장부에 적힌 것. 마신 물, 받은 치료, 잃은 판돈</span></pre>
+    <button class="copy" data-target="sheet-r">양식 복사</button>
+    <button class="copy dice" data-target="sheet-r" data-side="r">랜덤 배정</button>
+  </div>
+</div></section>
+
+<section id="world"><div class="wrap">
+  <p class="kicker">THE LONG SLEEP</p>
+  <h2 class="h2">죽음보다 오래 남는 잠</h2>
+  <p class="lead">생존자들이 임의로 붙인 이름이다. 학명도 기록도 없다. 숙주를 죽이지 않고 오래 살려 두는 기생성 병원체로 추정된다.</p>
+
+  <div class="pair">
+    <div class="box"><h3>주는 것</h3><p>빠른 회복, 높은 지구력, 둔해지는 통증, 느려지는 노화. 그래서 초기의 감염은 저주처럼 보이지 않는다.</p></div>
+    <div class="box"><h3>가져가는 것</h3><p>판단력의 침식, 감정 조절의 붕괴, 환각. 먼저 무너지는 것은 몸이 아니다.</p></div>
+  </div>
+
+  <div class="stages">
+    <div class="stage"><b>0–30</b><span>잠복. 증상이 없어 본인도 모른다.</span></div>
+    <div class="stage"><b>40</b><span>발현. 발열과 불면, 설명되지 않는 회복력.</span></div>
+    <div class="stage"><b>50–70</b><span>침식. 충동과 환각이 섞인다. 자아가 남아 있어 더 괴롭다.</span></div>
+    <div class="stage"><b>80+</b><span>광폭화. 사람을 알아보지 못하고 비말로 옮긴다.</span></div>
+    <div class="stage"><b>100</b><span>완전 잠식. 자아가 사라진 몸이 계속 움직인다.</span></div>
+  </div>
+
+  <p style="margin-top:26px">병원체는 숙주의 정서에 반응한다. 공포와 절망은 진행을 앞당기고, 안전하다고 느끼는 순간에는 잠잠해진다. 이 사실을 두 공동체가 정반대로 사용한다. 한쪽은 사람을 가라앉히기 위해, 다른 쪽은 무대 위에서 끌어올리기 위해.</p>
+  <p>극소수는 감염되고도 진행이 멈춘다. 생존자들은 그들을 면역자라 부르지만, 원인을 아는 사람은 아직 없다.</p>
+</div></section>
+
+<section id="haven"><div class="wrap">
+  <p class="kicker">SHELTER — 지하</p>
+  <h2 class="h2">HAVEN</h2>
+  <p class="lead">폐쇄된 군사 시설을 개조한 지하 셸터. 백 명 남짓이 산다. 낙원이 아니라 피난처이고, 물과 식량, 부품을 바깥에서 구해야 하므로 매일 정찰조를 올려보내야 한다.</p>
+
+  <div class="player" data-track="haven" data-name="Nightwatch" data-src="assets/audio_01_229bb08832.mp3">
+    <button class="play" aria-label="재생">▶</button>
+    <div class="meta"><div class="tname">Nightwatch</div><div class="thint">HAVEN 테마</div></div>
+    <input type="range" class="seek" value="0" min="0" max="1000" aria-label="재생 위치" disabled>
+    <span class="time">0:00</span>
+    <button class="load">파일</button>
+  </div>
+
+  <figure class="banner"><img src="assets/image_01_4f856a3b4e.jpg" alt="셸터 지하 통로"></figure>
+
+  <p>여기서는 아무도 굶어 죽지 않는다. 사막에서 그것은 기적에 가까운 조건이고, 그 대가로 규칙이 촘촘하다. 배급 시간, 소등, 교대, 반입 검사. 그리고 감염을 숨기는 일은 이곳에서 가장 무거운 죄다.</p>
+
+  <div class="person lead-figure">
+    <div class="portrait"><img src="assets/image_02_1014127522.jpg" alt="엘라이어스 베인"></div>
+    <div>
+    <div class="nm"><b>엘라이어스 베인</b><em>수장 · 39</em></div>
+    <p>희망을 주는 말로 사람을 이끌지 않는다. 식량이 부족하면 부족하다고 말하고, 죽을 수 있으면 그렇다고 말한다. 그럼에도 언제나 지금 할 수 있는 다음 행동을 제시한다. 위험한 임무에는 가장 먼저 나간다.</p>
+    </div>
+  </div>
+
+  <p class="quote">"사람이라서 살릴 수 있는 순간까지는 살린다. 죽여야 할 순간이 오면, 내가 결정해."</p>
+
+  <div class="person">
+    <div class="portrait"><img src="assets/image_03_895bbe977f.jpg" alt="마야 코르테스"></div>
+    <div>
+    <div class="nm"><b>마야 코르테스</b><em>의료 · 44</em></div>
+    <p>셸터의 유일한 정식 의료인. 감염자를 마지막까지 환자로 보려 한다. 엘라이어스의 처분 결정에 매번 반대하지만 결국 그의 판단을 따른다. 격리실 명단을 쥐고 있어 누군가의 이상을 가장 먼저 알아차린다.</p>
+    </div>
+  </div>
+  <div class="person">
+    <div class="portrait"><img src="assets/image_04_4cd68331d5.jpg" alt="딘 아버클"></div>
+    <div>
+    <div class="nm"><b>딘 아버클</b><em>정찰대장 · 31</em></div>
+    <p>사막을 가장 잘 아는 남자. 원칙보다 사람을 먼저 챙기는 성향이라 엘라이어스와 자주 부딪힌다. 말이 많고 농담이 헤프며, 그래서 이 지하의 공기를 견딜 만하게 만든다.</p>
+    </div>
+  </div>
+  <div class="person">
+    <div class="portrait"><img src="assets/image_05_6c28c9e9d4.jpg" alt="로레인 벅"></div>
+    <div>
+    <div class="nm"><b>로레인 벅</b><em>보급 · 52</em></div>
+    <p>물과 식량의 배분을 쥔 사람. 숫자로 말하고 감정을 섞지 않는다. 제 몫을 못 하는 인원은 내보내야 한다고 공공연히 주장하며, 엘라이어스의 결정에 정면으로 반대할 수 있는 유일한 구성원이다.</p>
+    </div>
+  </div>
+
+  <figure class="banner"><img src="assets/image_06_e7185bdfbb.jpg" alt="해치 밖의 사막"></figure>
+
+  <div class="card-list">
+    <div class="card"><b>지휘실</b><span>벽에 붙은 사막 지도, 마른 펜 냄새. 결정이 내려지는 자리.</span></div>
+    <div class="card"><b>급수 · 정수실</b><span>물 떨어지는 소리가 끊기지 않고, 곰팡이와 소독약 냄새가 섞인다.</span></div>
+    <div class="card"><b>격리실</b><span>창살 너머는 조용하다. 칸마다 이름표가 붙어 있다.</span></div>
+    <div class="card"><b>해치와 지상 초소</b><span>문을 열면 열기가 들이치고 빛이 눈을 찌른다. 바람 소리 외에 아무것도 없다.</span></div>
+  </div>
+</div></section>
+
+<section id="garden"><div class="wrap">
+  <p class="kicker">THE PIT — 협곡</p>
+  <h2 class="h2">ROSE GARDEN</h2>
+  <p class="lead">장미는 한 송이도 없다. 붉은 것은 불과 모래. 그리고 피와 스칼렛 크로우. HAVEN에서 사막을 가로질러 반나절, 폐광 협곡에 밤마다 불빛이 켜지는 곳.</p>
+
+  <div class="player" data-track="garden" data-name="Rose Garden Duel" data-src="assets/audio_02_144168395c.mp3">
+    <button class="play" aria-label="재생">▶</button>
+    <div class="meta"><div class="tname">Rose Garden Duel</div><div class="thint">ROSE GARDEN 테마</div></div>
+    <input type="range" class="seek" value="0" min="0" max="1000" aria-label="재생 위치" disabled>
+    <span class="time">0:00</span>
+    <button class="load">파일</button>
+  </div>
+
+  <figure class="banner tall"><img src="assets/image_07_e0f162616d.jpg" alt="해 질 녘의 협곡 거래소"></figure>
+
+  <p>셸터도 공동체도 아니다. 사람들은 물을 들고 와 거래하고, 빚지고, 붙잡힌다. 마신 물 한 컵도, 받은 치료도, 잃은 판돈도 전부 여왕의 장부에 적힌다. 빚을 갚는 방법은 둘뿐이다. 로즈가든을 위해 일하거나, 더 핏에 서거나.</p>
+  <p>TLS가 공포를 먹고 자란다는 사실을 이곳도 안다. 다만 쓰는 방향이 반대다. 함성과 피 냄새, 굶주림. 감염자를 모래 위에 세우고 겁을 주면 수치는 눈앞에서 치솟고, 관중은 사람이 괴물로 넘어가는 바로 그 순간에 돈을 건다.</p>
+
+  <div class="person lead-figure">
+    <div class="portrait"><img src="assets/image_08_5f225f65a0.jpg" alt="스칼렛 크로우"></div>
+    <div>
+    <div class="nm"><b>스칼렛 크로우</b><em>레드 마담 · 30대 중반</em></div>
+    <p>잘 웃고, 박수를 치고, 노래하듯 말한다. 기분이 좋을 때가 가장 위험하다. 선악을 모르는 것이 아니라 재미없다는 이유로 버렸다. 마음에 든 것은 이름을 새로 붙여 곁에 두고, 흥미를 잃는 순간 모래 위로 던진다.</p>
+    </div>
+  </div>
+
+  <p class="quote">"살려 줘? 달링, 그건 부탁이 아니라 입찰이야. 뭘 걸 건데?"</p>
+
+  <div class="person">
+    <div class="portrait"><img src="assets/image_09_68d6a5ad95.jpg" alt="강아지"></div>
+    <div>
+    <div class="nm"><b>강아지</b><em>챔피언 · 본명 오티스 크로우</em></div>
+    <p>로즈가든의 옛 주인이자 그녀의 남편. 지금은 목에 쇠사슬을 차고 모래 위에 선다. 수치는 광폭화 직전에서 멈춰 있는데, 저절로 멈춘 것이 아니다. 경기 전에는 굶주림으로 끌어올리고, 끝나면 아내의 노랫소리로 끌어내린다.</p>
+    </div>
+  </div>
+
+  <figure class="banner tall"><img src="assets/image_10_64bd709997.jpg" alt="더 핏의 경기"></figure>
+
+  <div class="card-list">
+    <div class="card"><b>더 핏</b><span>협곡 바닥에 원형으로 파인 모래 구덩이. 내려오는 계단은 있어도 올라가는 계단은 없다.</span></div>
+    <div class="card"><b>장부</b><span>공짜로 주어지는 것은 없다. 사막에서 건넨 물 한 컵도 적힌다.</span></div>
+    <div class="card"><b>여왕의 방</b><span>물이 귀한 사막에서 향수 냄새가 나는 유일한 공간. 향수는 마지막 한 병뿐이다.</span></div>
+    <div class="card"><b>단 하나의 규칙</b><span>여왕을 지루하게 하지 말 것.</span></div>
+  </div>
+</div></section>
+
+<section id="signal"><div class="wrap">
+  <p class="kicker">UNIDENTIFIED SIGNAL</p>
+  <h2 class="h2">세 번째 불빛</h2>
+  <p class="lead">정찰대가 북동쪽에서 잡아 온 신호다. 출처는 확인되지 않았고, 두 공동체 어느 쪽의 주파수도 아니다.</p>
+  <div class="signal-box">
+    <div class="spinner"></div>
+    <p class="sig-title">TRIANGULATING</p>
+    <div id="log"></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">THE LONG SLEEP</div></footer>
+
+<script>
+/* ---------------- 적성 판정 ---------------- */
+const QS=[
+ {q:"사막에서 물 한 통을 주웠다. 아무도 보지 못했다.",
+  a:[{t:"배급소에 넘긴다. 내 몫은 거기서 다시 받는다.",h:2,r:0,role:"supply"},
+     {t:"가방 깊숙이 넣는다. 나눠서 없어지는 것보다 낫다.",h:0,r:2,role:"drifter"}]},
+ {q:"감염이 깊어진 사람이 아직 당신의 이름을 부른다.",
+  a:[{t:"곁에 앉아 이름을 계속 불러 준다. 아직 사람이다.",h:2,r:0,role:"medic"},
+     {t:"얼마나 더 버티는지 지켜본다. 그것도 정보다.",h:0,r:2,role:"gambler"}]},
+ {q:"규칙이 많은 곳에 들어왔다. 첫인상은?",
+  a:[{t:"지킬 규칙이 있다는 건 내일이 있다는 뜻이다.",h:2,r:0,role:"scout"},
+     {t:"누군가 나를 편하게 부리려고 만든 문장들이다.",h:0,r:2,role:"fighter"}]},
+ {q:"당신 몸에서 열이 오르기 시작했다.",
+  a:[{t:"의료실에 먼저 보고한다. 숨기면 더 나빠진다.",h:2,r:0,role:"medic"},
+     {t:"아무에게도 말하지 않는다. 쫓겨나는 게 더 빠른 죽음이다.",h:0,r:2,role:"drifter"}]},
+ {q:"빚을 졌다. 갚을 방법이 둘 있다.",
+  a:[{t:"몇 달이 걸려도 일해서 갚는다.",h:2,r:0,role:"supply"},
+     {t:"한 판에 끝낸다. 이기면 남의 빚까지 가져올 수 있다.",h:0,r:2,role:"gambler"}]},
+ {q:"밤에 협곡 쪽에서 노랫소리가 들려온다.",
+  a:[{t:"해치를 잠그고 교대 인원을 늘린다.",h:2,r:0,role:"scout"},
+     {t:"어떤 노래인지 확인하러 간다.",h:0,r:2,role:"drifter"}]},
+ {q:"사람들이 당신을 볼 때 무엇을 보길 바라나.",
+  a:[{t:"돌아올 사람. 내보내도 되는 사람.",h:2,r:0,role:"scout"},
+     {t:"눈을 뗄 수 없는 사람.",h:0,r:2,role:"fighter"}]},
+ {q:"결국 사막에서 살아남는 방법은.",
+  a:[{t:"대열에 서고, 내 차례의 일을 한다.",h:2,r:0,role:"supply"},
+     {t:"판이 뒤집히는 순간에 제일 가까이 서 있는다.",h:0,r:2,role:"gambler"}]}
+];
+const ROLES={
+ scout:{n:"정찰조 후보",s:"차고. 딘 아버클이 당신의 신발을 먼저 본다.",w:"지상은 낮에 숨이 마르고 밤에 뼈가 시리다. 물 계산을 틀리지 말 것."},
+ medic:{n:"의료 보조",s:"의료실. 마야 코르테스가 소독약 냄새 속에서 당신을 부른다.",w:"격리실 명단에 아는 이름이 올라오는 날이 온다."},
+ supply:{n:"보급 인원",s:"배급소. 로레인 벅이 계량 저울 너머로 당신을 셈한다.",w:"숫자를 맞추는 일은 누군가의 몫을 줄이는 일이기도 하다."},
+ drifter:{n:"무소속",s:"해치 앞. 문은 안쪽에서만 열린다.",w:"숨긴 것이 있다면, 이 셸터에서 그것이 가장 무거운 죄다."},
+ gambler:{n:"장부에 오른 이름",s:"발코니 관람석. 아래에서 모래 냄새가 올라온다.",w:"빌린 것은 물 한 컵이라도 적힌다. 갚는 방법은 두 가지뿐이다."},
+ fighter:{n:"더 핏의 선수",s:"우리 안. 경기 순서를 기다리는 자리다.",w:"여왕을 지루하게 만든 사람은 다음 경기에 이름이 오른다."}
+};
+let qi=0,H=0,R=0,roles={};
+const $=s=>document.querySelector(s);
+function render(){
+  const q=QS[qi];
+  $("#qcount").textContent="질문 "+(qi+1)+" / "+QS.length;
+  $("#qbar").style.width=(qi/QS.length*100)+"%";
+  $("#qtext").textContent=q.q;
+  const box=$("#opts");box.innerHTML="";
+  q.a.forEach(o=>{
+    const b=document.createElement("button");
+    b.className="opt";b.type="button";b.textContent=o.t;
+    b.onclick=()=>{H+=o.h;R+=o.r;roles[o.role]=(roles[o.role]||0)+1;qi++;qi<QS.length?render():finish();};
+    box.appendChild(b);
+  });
+}
+function finish(){
+  $("#stage").style.display="none";
+  const res=$("#result");res.classList.add("show");
+  const total=H+R,ph=Math.round(H/total*100),pr=100-ph;
+  $("#sH").style.flexBasis=ph+"%";$("#sR").style.flexBasis=pr+"%";
+  $("#sH").textContent=ph>14?"HAVEN "+ph+"%":"";
+  $("#sR").textContent=pr>14?"ROSE GARDEN "+pr+"%":"";
+  const top=Object.keys(roles).sort((a,b)=>roles[b]-roles[a])[0];
+  const havenSide=ph>=pr;
+  const role=ROLES[top];
+  if(ph>=65){$("#verdict").textContent="문이 안쪽에서 열린다.";
+    $("#rdesc").textContent="당신은 규칙이 사람을 살린다고 믿는 쪽이다. 엘라이어스는 당신에게 영웅이 되라고 하지 않을 것이다. 살아남아 돌아오라고 할 뿐이다.";}
+  else if(pr>=65){$("#verdict").textContent="장부에 이름이 올라간다.";
+    $("#rdesc").textContent="당신은 규칙보다 판을 믿는 쪽이다. 스칼렛은 당신을 구하지 않는다. 얼마나 재미있는지 볼 뿐이다.";}
+  else{$("#verdict").textContent="두 불빛 사이에 서 있다.";
+    $("#rdesc").textContent=(havenSide?"셸터 쪽으로 반걸음 기울었지만":"협곡 쪽으로 반걸음 기울었지만")+", 어느 쪽도 당신을 완전히 붙들지 못했다. 사막에서 가장 오래 사는 유형이거나, 가장 빨리 죽는 유형이다.";}
+  lastTop=top;
+  $("#rrole").textContent=role.n;$("#rscene").textContent=role.s;$("#rwarn").textContent=role.w;
+  try{localStorage.setItem("tls-result",JSON.stringify({ph:ph,role:top}));}catch(e){}
+}
+$("#again").onclick=()=>{qi=0;H=0;R=0;roles={};$("#result").classList.remove("show");$("#stage").style.display="";render();};
+render();
+
+/* ---------------- 음원 재생바 ---------------- */
+document.querySelectorAll(".player").forEach(p=>{
+  const audio=new Audio();
+  const play=p.querySelector(".play"),seek=p.querySelector(".seek"),
+        time=p.querySelector(".time"),hint=p.querySelector(".thint"),
+        load=p.querySelector(".load"),nameEl=p.querySelector(".tname");
+  const file=document.createElement("input");
+  file.type="file";file.accept="audio/*";file.style.display="none";
+  p.appendChild(file);
+  const fmt=s=>isFinite(s)?Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0"):"0:00";
+  if(p.dataset.src){audio.src=p.dataset.src;audio.preload="metadata";seek.disabled=false;load.style.display="none";}
+  load.onclick=()=>file.click();
+  file.onchange=()=>{
+    const f=file.files[0];if(!f)return;
+    audio.src=URL.createObjectURL(f);
+    nameEl.textContent=f.name.replace(/\.[^.]+$/,"");
+    hint.textContent="준비됨";seek.disabled=false;
+  };
+  play.onclick=()=>{
+    if(!audio.src){file.click();return;}
+    if(audio.paused){document.querySelectorAll("audio").forEach(a=>a.pause());audio.play();play.textContent="❚❚";}
+    else{audio.pause();play.textContent="▶";}
+  };
+  audio.onplay=()=>{play.textContent="❚❚";hint.textContent="재생 중";};
+  audio.onpause=()=>{play.textContent="▶";if(audio.src)hint.textContent="일시정지";};
+  audio.onended=()=>{play.textContent="▶";hint.textContent="끝";};
+  audio.ontimeupdate=()=>{
+    if(audio.duration){seek.value=audio.currentTime/audio.duration*1000;time.textContent=fmt(audio.currentTime);}
+  };
+  seek.oninput=()=>{if(audio.duration)audio.currentTime=seek.value/1000*audio.duration;};
+});
+
+/* ---------------- 판정 결과 → 양식 ---------------- */
+const FILL={
+ scout:{side:"h",role:"정찰",rel:"딘 아버클의 정찰조. 상관과 부하"},
+ medic:{side:"h",role:"의료 보조",rel:"마야 코르테스를 돕는 사이"},
+ supply:{side:"h",role:"배급",rel:"로레인 벅 아래 보급 인원"},
+ drifter:{side:"h",role:"없음",rel:"어제 실려 온 낯선 사람"},
+ gambler:{side:"r",role:"손님",rel:"장부에 이름이 오른 빚쟁이",debt:"잃은 판돈과 마신 물. 아직 갚는 중"},
+ fighter:{side:"r",role:"선수",rel:"여왕이 고른 사람",debt:"경기로 갚는 중. 이기면 줄고 지면 늘어난다"}
+};
+let lastTop=null;
+document.getElementById("fill").onclick=()=>{
+  if(!lastTop)return;
+  const f=FILL[lastTop];
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.sheet===f.side));
+  document.getElementById("sheet-h").classList.toggle("hidden",f.side!=="h");
+  document.getElementById("sheet-r").classList.toggle("hidden",f.side!=="r");
+  const sheet=document.getElementById(f.side==="h"?"sheet-h":"sheet-r");
+  const set=(k,v)=>{const el=sheet.querySelector('[data-f="'+k+'"]');if(el&&v)el.textContent=v;};
+  set("role",f.role);set("rel",f.rel);set("debt",f.debt);
+  document.getElementById("profile").scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+/* ---------------- 프로필 양식 ---------------- */
+document.querySelectorAll(".tabs button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+    document.getElementById("sheet-h").classList.toggle("hidden",b.dataset.sheet!=="h");
+    document.getElementById("sheet-r").classList.toggle("hidden",b.dataset.sheet!=="r");
+  };
+});
+document.querySelectorAll(".copy:not(.dice)").forEach(b=>{
+  b.onclick=async()=>{
+    const pre=document.getElementById(b.dataset.target).querySelector("pre");
+    const text=pre.innerText;
+    try{await navigator.clipboard.writeText(text);b.textContent="복사됨";}
+    catch(e){
+      const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);
+      t.select();try{document.execCommand("copy");b.textContent="복사됨";}catch(_){b.textContent="복사 실패";}
+      document.body.removeChild(t);
+    }
+    setTimeout(()=>b.textContent="양식 복사",1800);
+  };
+});
+
+/* ---------------- 랜덤 배정 ---------------- */
+const POOL={
+ name:["루카스 하디","노라 벤틀리","이선 마르케스","제이드 오코너","사샤 린","밀로 레예스","빈센트 고","하나 델가도","오웬 크래프트","리아 손","클라라 웨이드","토비아스 문"],
+ look:["마른 체구에 목까지 덮는 스카프. 왼쪽 눈썹이 흉터로 끊겨 있다.",
+   "키가 크고 어깨가 굽었다. 손등에 오래된 화상 자국.",
+   "짧게 자른 머리, 햇볕에 그을린 목덜미. 늘 장갑을 낀다.",
+   "동그란 얼굴에 웃는 상. 걸을 때 오른쪽 다리를 약간 끈다.",
+   "잿빛 눈, 표정 변화가 적다. 손톱이 늘 짧게 깎여 있다.",
+   "곱슬머리를 모래바람 때문에 천으로 싸맨다. 앞니가 하나 없다.",
+   "체격이 단단하고 목소리가 낮다. 쇄골 아래 문신이 반쯤 지워져 있다.",
+   "창백한 피부에 주근깨. 낮보다 밤에 또렷해 보인다."],
+ joinH:["반년 전 정찰대가 사막에서 주워 왔다.","셸터 초창기부터 있었다. 문을 만든 사람 중 하나.",
+   "다른 공동체가 무너진 뒤 걸어서 도착했다.","어제 실려 왔다. 어떻게 왔는지 본인도 잘 모른다.",
+   "물을 들고 찾아와 교환을 요구했고, 그대로 눌러앉았다.","격리실에서 나온 지 두 달 됐다."],
+ joinR:["빚을 지고 협곡에 남았다.","물을 사러 왔다가 장부에 이름이 올랐다.",
+   "사막에서 붙잡혀 우리에 들어갔다.","제 발로 걸어 들어와 일자리를 달라고 했다.",
+   "여왕의 눈에 띄어 이름을 새로 받았다.","앞선 주인이 넘긴 빚과 함께 딸려 왔다."],
+ roleH:["정찰","의료 보조","정비","배급","없음"],
+ roleR:["선수","손님","일꾼","포로","없음"],
+ inf:["비감염","비감염","감염자","감염자","면역자"],
+ sign:["미열이 가시지 않는다. 손끝이 가끔 떨린다.","상처가 이상하게 빨리 아문다. 통증을 잘 못 느낀다.",
+   "잠을 거의 못 잔다. 소리에 과하게 반응한다.","가끔 없는 사람의 목소리를 듣는다. 아직은 구분할 수 있다.",
+   "체온이 늘 높고 밤에 식은땀을 흘린다."],
+ hideH:["열이 오른 지 열흘째다. 아직 아무에게도 말하지 않았다.",
+   "정찰 중에 사람을 두고 왔다. 보고서에는 다르게 적었다.",
+   "격리실에 아는 이름이 있다. 매일 밤 그 앞에 선다.",
+   "배급 기록을 한 번 손댔다.","로즈가든에 다녀온 적이 있다.",
+   "예전 공동체에서 쫓겨난 이유를 말하지 않았다."],
+ hideR:["장부에 적힌 액수보다 더 많이 마셨다.","HAVEN에서 온 사람이라는 걸 숨기고 있다.",
+   "여왕의 물건 하나를 몰래 갖고 있다.","경기 결과를 미리 알고 판돈을 걸었다.",
+   "열이 오르기 시작했다. 들키면 다음 경기는 모래 위다.",
+   "도망칠 경로를 이미 그려 뒀다."],
+ relH:["딘 아버클의 정찰조. 상관과 부하","마야 코르테스를 돕는 사이","로레인 벅 아래 보급 인원",
+   "엘라이어스와는 오래된 동료","어제 실려 온 낯선 사람","이름만 아는 사이. 대화한 적은 없다"],
+ relR:["장부에 이름이 오른 빚쟁이","여왕의 눈에 든 사람","강아지의 경기를 매번 보는 관객",
+   "우리에 갇힌 포로","여왕이 이름을 새로 붙여 준 사람","물 창고에서 일하는 얼굴 없는 인원"],
+ skill:["총기","기계","응급처치","운전","협상","무전","사격","요리","셈","길 찾기"],
+ item:["금이 간 손목시계. 멈춘 지 오래됐다.","반으로 접힌 가족사진.","이름이 지워진 열쇠 하나.",
+   "다 쓴 립스틱.","아이 크기의 장갑 한 짝.","붕괴 전 라디오. 전원은 들어오지 않는다.",
+   "표지가 떨어진 문고본.","한 알 남은 약병."],
+ debt:["물 40리터. 갚는 중.","받은 치료비. 경기 두 번으로 정산하기로 했다.",
+   "잃은 판돈. 액수는 여왕만 안다.","앞사람이 넘긴 빚. 이유는 듣지 못했다.",
+   "우리에서 먹은 빵값. 하루치씩 늘어난다.","갚았다고 들었지만 장부에는 아직 남아 있다."]
+};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function randomize(side){
+  const sheet=document.getElementById(side==="h"?"sheet-h":"sheet-r");
+  const inf=pick(POOL.inf);
+  const sk=[...POOL.skill].sort(()=>Math.random()-.5).slice(0,2).join(" / ");
+  const v={
+    name:pick(POOL.name),
+    age:String(19+Math.floor(Math.random()*30)),
+    look:pick(POOL.look),
+    join:pick(side==="h"?POOL.joinH:POOL.joinR),
+    role:pick(side==="h"?POOL.roleH:POOL.roleR),
+    inf:inf,
+    sign:inf==="감염자"?pick(POOL.sign):"없음",
+    hide:pick(side==="h"?POOL.hideH:POOL.hideR),
+    rel:pick(side==="h"?POOL.relH:POOL.relR),
+    skill:sk,
+    item:pick(POOL.item),
+    debt:pick(POOL.debt)
+  };
+  Object.keys(v).forEach(k=>{
+    const el=sheet.querySelector('[data-f="'+k+'"]');
+    if(el)el.textContent=v[k];
+  });
+}
+document.querySelectorAll(".dice").forEach(b=>{
+  b.onclick=()=>{randomize(b.dataset.side);b.textContent="배정됨";setTimeout(()=>b.textContent="랜덤 배정",1400);};
+});
+
+/* ---------------- 신호 로그 ---------------- */
+const LINES=[
+ "수신 강도 불안정 · 방위 북동 31도",
+ "주파수 대조 — HAVEN 아님 / ROSE GARDEN 아님",
+ "반복 구간 감지. 사람 목소리로 추정됨",
+ "거리 환산 실패 · 중계 지점 존재 가능성",
+ "정찰 파견 보류. 물 계산이 맞지 않음",
+ "다시 수신 · 같은 구간 반복"
+];
+const log=document.getElementById("log");let li=0;
+function pushLine(){
+  const d=document.createElement("div");
+  d.textContent="› "+LINES[li%LINES.length];
+  log.appendChild(d);li++;
+  while(log.children.length>4)log.removeChild(log.firstChild);
+}
+pushLine();setInterval(pushLine,2600);
+</script>
+</body>
+</html>
