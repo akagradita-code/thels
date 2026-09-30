@@ -67,102 +67,8 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:30%;height:1px;
 @media (prefers-reduced-motion: reduce){.glow{animation:none}}
 header .wrap{position:relative;z-index:2}
 .title{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:clamp(36px,10vw,74px);letter-spacing:.2em;line-height:1.05;margin-bottom:18px}
-.tagline{font-size:clamp(15px,4.2vw,18px);max-width:none;color:#f2e7de}
-.subline{color:rgba(242,231,222,.72);font-size:13.5px;max-width:none}
-
-
-/* world navigation banner */
-.world-banner{
-  position:relative;
-  display:block;
-  margin:0 0 34px;
-  padding:22px 22px 20px;
-  color:#f2e7de;
-  text-decoration:none;
-  overflow:hidden;
-  border:1px solid rgba(51,39,31,.28);
-  background:
-    radial-gradient(70% 150% at 8% 100%,rgba(143,179,170,.28),transparent 58%),
-    radial-gradient(65% 140% at 92% 0%,rgba(176,54,47,.30),transparent 58%),
-    linear-gradient(105deg,#211a17 0%,#30231d 55%,#422821 100%);
-  box-shadow:0 8px 24px rgba(51,39,31,.08);
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
-}
-.world-banner::before{
-  content:"";
-  position:absolute;
-  left:0;right:0;top:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(242,231,222,.55),transparent);
-}
-.world-banner::after{
-  content:"";
-  position:absolute;
-  width:170px;height:170px;
-  right:-72px;bottom:-115px;
-  border-radius:50%;
-  border:1px solid rgba(242,231,222,.14);
-  box-shadow:0 0 0 18px rgba(242,231,222,.035),0 0 0 36px rgba(242,231,222,.025);
-}
-.world-banner:hover,.world-banner:focus-visible{
-  transform:translateY(-2px);
-  border-color:rgba(176,54,47,.5);
-  box-shadow:0 12px 30px rgba(51,39,31,.14);
-  outline:none;
-}
-.world-banner .wb-kicker{
-  position:relative;z-index:1;
-  display:block;
-  margin-bottom:7px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:10px;
-  letter-spacing:.22em;
-  color:rgba(242,231,222,.58);
-}
-.world-banner .wb-title{
-  position:relative;z-index:1;
-  display:flex;
-  align-items:baseline;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:5px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:clamp(17px,4vw,23px);
-  letter-spacing:.13em;
-}
-.world-banner .wb-title strong{font-weight:400}
-.world-banner .wb-title em{
-  font-style:normal;
-  font-size:10px;
-  letter-spacing:.08em;
-  color:#d9b6a8;
-}
-.world-banner .wb-bottom{
-  position:relative;z-index:1;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-.world-banner .wb-copy{
-  margin:0;
-  max-width:38em;
-  font-size:12.5px;
-  line-height:1.65;
-  color:rgba(242,231,222,.72);
-}
-.world-banner .wb-cta{
-  flex:none;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:10.5px;
-  letter-spacing:.12em;
-  color:#f2e7de;
-  white-space:nowrap;
-}
-@media(max-width:560px){
-  .world-banner{padding:18px 17px 17px}
-  .world-banner .wb-bottom{align-items:flex-start;flex-direction:column;gap:10px}
-  .world-banner .wb-copy{font-size:12px}
-}
+.tagline{font-size:clamp(15px,4.2vw,18px);max-width:25em;color:#f2e7de}
+.subline{color:rgba(242,231,222,.72);font-size:13.5px;max-width:27em}
 
 /* sections */
 section{padding:66px 0 74px;border-top:1px solid var(--line-soft)}
@@ -292,6 +198,93 @@ section p{max-width:34em}
 .sig-title{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.2em;margin-bottom:8px}
 footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-align:center}
 :focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+
+/* ===== 2026 editorial layout ===== */
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:12px}
+.section-index{margin:0;font:500 9px/1 "IBM Plex Mono",monospace;letter-spacing:.18em;color:var(--ink-soft);white-space:nowrap}
+
+/* hero: wider, cleaner type block */
+header{min-height:68vh;padding:96px 0 58px}
+.tagline,.subline{max-width:none}
+.tagline{max-width:58em}
+.subline{max-width:62em}
+
+/* admission */
+#quiz .wrap,#profile .wrap,#world .wrap,#haven .wrap{max-width:900px}
+#quiz .lead,#profile .lead,#world .lead,#haven .lead{max-width:48em}
+.quiz-card{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(250px,.75fr);gap:34px;align-items:start;padding:28px;background:rgba(251,246,241,.72)}
+.quiz-card #stage{min-width:0}
+.quiz-card .result{min-width:0;border-left:1px solid var(--line-soft);padding-left:28px}
+.quiz-card .result.show{display:block}
+@media(max-width:760px){.quiz-card{display:block}.quiz-card .result{border-left:0;border-top:1px solid var(--line-soft);padding:24px 0 0;margin-top:26px}}
+
+/* profile */
+#profile{padding-top:54px}
+.tabs button{padding:13px 8px}
+.sheet{padding:22px 20px}
+.sheet pre{line-height:1.9}
+
+/* world */
+#world .pair{grid-template-columns:1fr 1fr}
+#world .box{min-height:140px;display:flex;flex-direction:column;justify-content:flex-end}
+@media(max-width:619px){#world .pair{grid-template-columns:1fr}}
+
+/* HAVEN */
+#haven{padding-top:78px;padding-bottom:82px}
+#haven .banner:first-of-type{margin-top:8px}
+#haven .person{background:rgba(255,255,255,.25);padding:20px 0}
+#haven .card-list{grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+#haven .card{border:0;min-height:132px;background:rgba(255,255,255,.52)}
+@media(max-width:760px){#haven .card-list{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){#haven .card-list{grid-template-columns:1fr}}
+
+/* ROSE GARDEN */
+#garden{padding-top:80px;padding-bottom:88px;color:var(--bone);background:radial-gradient(ellipse at 82% 8%,rgba(169,74,64,.22),transparent 34%),radial-gradient(ellipse at 12% 90%,rgba(99,77,68,.16),transparent 38%),linear-gradient(145deg,#3b2927,#241b1b)}
+#garden .kicker{color:#b69b91}
+#garden .section-index{color:rgba(243,232,223,.45)}
+#garden .garden-lead{color:var(--bone-dim);max-width:50em}
+.garden-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(240px,.72fr);gap:38px;align-items:start}
+.garden-story p{color:rgba(243,232,223,.76);font-size:13.5px;line-height:1.95}
+.garden-story .banner{margin-bottom:24px;border-color:rgba(243,232,223,.16)}
+.garden-aside{position:sticky;top:78px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(243,232,223,.13);border:1px solid rgba(243,232,223,.13)}
+.info-card{min-height:124px;padding:17px;background:rgba(36,27,27,.52)}
+.info-card b{display:block;margin-bottom:10px;color:#e9d4cb;font:500 9px/1.2 "IBM Plex Mono",monospace;letter-spacing:.13em}
+.info-card span{color:rgba(243,232,223,.62);font-size:11.5px;line-height:1.75}
+#garden .people-compact{margin-top:44px;border-top:1px solid rgba(243,232,223,.16)}
+#garden .person{border-bottom-color:rgba(243,232,223,.14)}
+#garden .person p{color:rgba(243,232,223,.72);max-width:none}
+#garden .person .nm b{color:#f0ddd4}
+#garden .person .nm em{color:rgba(243,232,223,.46)}
+#garden .portrait{border-color:rgba(243,232,223,.15);background:#2b2020}
+#garden .quote{color:#f0ddd4;border-left-color:var(--clay)}
+#garden .garden-final-image{margin-top:38px;border-color:rgba(243,232,223,.16)}
+#garden .garden-cards{grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(243,232,223,.13);border:1px solid rgba(243,232,223,.13)}
+#garden .garden-cards .card{border:0;min-height:132px;background:rgba(36,27,27,.54);padding:17px}
+#garden .garden-cards .card b{color:#e9d4cb}
+#garden .garden-cards .card span{color:rgba(243,232,223,.62);font-size:12px;line-height:1.75}
+@media(max-width:760px){.garden-grid{grid-template-columns:1fr}.garden-aside{position:static}#garden .garden-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){#garden .garden-cards{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr 1fr}}
+
+/* signal / next preview */
+#signal{min-height:470px;padding:82px 0 96px;background:radial-gradient(circle at 50% 46%,rgba(201,126,111,.08),transparent 20%),#17191a;color:#eadfd6;border-top:0}
+#signal .wrap{text-align:center}
+.signal-kicker{margin:0 0 12px;color:rgba(234,223,214,.42);font:500 9px/1 "IBM Plex Mono",monospace;letter-spacing:.28em}
+.signal-title{margin:0;font-size:clamp(28px,5vw,44px);font-weight:400;letter-spacing:-.04em;line-height:1}
+.signal-copy{margin:14px auto 42px;max-width:32em;color:rgba(234,223,214,.48);font-size:12px;line-height:1.8}
+.signal-terminal{max-width:500px;margin:0 auto;padding:28px 26px 24px;border:1px solid rgba(234,223,214,.12);background:rgba(10,12,13,.28)}
+.signal-core{position:relative;width:92px;height:92px;margin:0 auto 28px}
+.ring{position:absolute;inset:0;border:1px solid rgba(234,223,214,.18);border-radius:50%;animation:spin 8s linear infinite}
+.ring:before{content:"";position:absolute;top:-3px;left:50%;width:5px;height:5px;border-radius:50%;background:#c57c6e;box-shadow:0 0 14px rgba(197,124,110,.6)}
+.ring.r2{inset:13px;border-color:rgba(234,223,214,.11);animation-direction:reverse;animation-duration:5s}
+.pulse{position:absolute;inset:38px;border:1px solid rgba(197,124,110,.45);border-radius:50%;box-shadow:0 0 20px rgba(197,124,110,.12);animation:pulse 2.6s ease-in-out infinite}
+.signal-log{padding-top:17px;border-top:1px solid rgba(234,223,214,.1);text-align:left;color:rgba(234,223,214,.47);font:10px/2 "IBM Plex Mono",monospace;letter-spacing:.04em}
+.signal-log #log{min-height:2em;margin:0;max-width:none;text-align:left;color:rgba(234,223,214,.47);font:inherit}
+.signal-status{margin-top:25px;color:rgba(197,124,110,.72);font:500 9px/1 "IBM Plex Mono",monospace;letter-spacing:.2em}
+@media(prefers-reduced-motion:reduce){.ring,.pulse{animation:none}}
+
+/* footer */
+footer{padding:30px 0 44px}
 </style>
 </head>
 <body>
@@ -316,8 +309,7 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
 </header>
 
 <section id="quiz"><div class="wrap">
-  <p class="kicker">ADMISSION TEST</p>
-  <h2 class="h2">당신은 어느 쪽 불빛인가</h2>
+  <div class="editorial-head"><div><p class="kicker">ADMISSION TEST</p><h2 class="h2">당신은 어느 쪽 불빛인가</h2></div><p class="section-index">01 / DECISION</p></div>
   <p class="lead">여덟 개의 상황이 주어진다. 정답은 없고, 사막에서 오래 버티는 방식만 다르다. 마지막에 당신이 설 자리가 정해진다.</p>
 
   <div class="player" data-track="admission" data-name="[good night]" data-src="assets/good_night.mp3">
@@ -352,8 +344,7 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
 </div></section>
 
 <section id="profile"><div class="wrap">
-  <p class="kicker">CHARACTER SHEET</p>
-  <h2 class="h2">당신을 적어 넣는 칸</h2>
+  <div class="editorial-head"><div><p class="kicker">CHARACTER SHEET</p><h2 class="h2">당신을 적어 넣는 칸</h2></div><p class="section-index">02 / IDENTITY</p></div>
   <p class="lead">유저 프로필로 붙여 넣고 시작할 수 있습니다.</p>
 
   <div class="tabs" role="tablist">
@@ -396,17 +387,7 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
 </div></section>
 
 <section id="world"><div class="wrap">
-  <a class="world-banner" href="https://thelongsleep.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="THE LONG SLEEP 전체보기로 이동">
-    <span class="wb-kicker">WORLD ARCHIVE · PLATFORM INDEX</span>
-    <span class="wb-title"><strong>THE LONG SLEEP</strong><em>전체보기</em></span>
-    <span class="wb-bottom">
-      <span class="wb-copy">각 플랫폼의 세계와 인물, 이야기를 한곳에서 확인하세요.</span>
-      <span class="wb-cta">[ 전체보기 ↗ ]</span>
-    </span>
-  </a>
-
-  <p class="kicker">THE LONG SLEEP</p>
-  <h2 class="h2">죽음보다 오래 남는 잠</h2>
+  <div class="editorial-head"><div><p class="kicker">THE LONG SLEEP</p><h2 class="h2">죽음보다 오래 남는 잠</h2></div><p class="section-index">03 / PATHOGEN</p></div>
   <p class="lead">생존자들이 임의로 붙인 이름이다. 학명도 기록도 없다. 숙주를 죽이지 않고 오래 살려 두는 기생성 병원체로 추정된다.</p>
 
   <div class="pair">
@@ -427,8 +408,7 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
 </div></section>
 
 <section id="haven"><div class="wrap">
-  <p class="kicker">SHELTER — 지하</p>
-  <h2 class="h2">HAVEN</h2>
+  <div class="editorial-head"><div><p class="kicker">SHELTER — 지하</p><h2 class="h2">HAVEN</h2></div><p class="section-index">04 / THE SHELTER</p></div>
   <p class="lead">폐쇄된 군사 시설을 개조한 지하 셸터. 백 명 남짓이 산다. 낙원이 아니라 피난처이고, 물과 식량, 부품을 바깥에서 구해야 하므로 매일 정찰조를 올려보내야 한다.</p>
 
   <div class="player" data-track="haven" data-name="Nightwatch" data-src="assets/audio_01_229bb08832.mp3">
@@ -485,62 +465,76 @@ footer{padding:34px 0 52px;background:var(--night);color:rgba(234,223,214,.55);f
   </div>
 </div></section>
 
-<section id="garden"><div class="wrap">
-  <p class="kicker">THE PIT — 협곡</p>
-  <h2 class="h2">ROSE GARDEN</h2>
-  <p class="lead">장미는 한 송이도 없다. 붉은 것은 불과 모래. 그리고 피와 스칼렛 크로우. HAVEN에서 사막을 가로질러 반나절, 폐광 협곡에 밤마다 불빛이 켜지는 곳.</p>
+<section id="garden">
+  <div class="wrap">
+    <div class="section-head garden-head">
+      <div>
+        <p class="kicker">THE PIT — 협곡</p>
+        <h2 class="h2">ROSE GARDEN</h2>
+      </div>
+      <p class="section-index">02 / THE PIT</p>
+    </div>
+    <p class="lead garden-lead">장미는 한 송이도 없다. 붉은 것은 불과 모래. 그리고 피와 스칼렛 크로우. HAVEN에서 사막을 가로질러 반나절, 폐광 협곡에 밤마다 불빛이 켜지는 곳.</p>
 
-  <div class="player" data-track="garden" data-name="Rose Garden Duel" data-src="assets/audio_02_144168395c.mp3">
-    <button class="play" aria-label="재생">▶</button>
-    <div class="meta"><div class="tname">Rose Garden Duel</div><div class="thint">ROSE GARDEN 테마</div></div>
-    <input type="range" class="seek" value="0" min="0" max="1000" aria-label="재생 위치" disabled>
-    <span class="time">0:00</span>
-    <button class="load">파일</button>
-  </div>
+    <div class="garden-grid">
+      <div class="garden-story">
+        <figure class="banner tall"><img src="assets/image_07_e0f162616d.jpg" alt="해 질 녘의 협곡 거래소"></figure>
+        <p>셸터도 공동체도 아니다. 사람들은 물을 들고 와 거래하고, 빚지고, 붙잡힌다. 마신 물 한 컵도, 받은 치료도, 잃은 판돈도 전부 여왕의 장부에 적힌다. 빚을 갚는 방법은 둘뿐이다. 로즈가든을 위해 일하거나, 더 핏에 서거나.</p>
+        <p>TLS가 공포를 먹고 자란다는 사실을 이곳도 안다. 다만 쓰는 방향이 반대다. 함성과 피 냄새, 굶주림. 감염자를 모래 위에 세우고 겁을 주면 수치는 눈앞에서 치솟고, 관중은 사람이 괴물로 넘어가는 바로 그 순간에 돈을 건다.</p>
+        <div class="quote">"살려 줘? 달링, 그건 부탁이 아니라 입찰이야. 뭘 걸 건데?"</div>
+      </div>
 
-  <figure class="banner tall"><img src="assets/image_07_e0f162616d.jpg" alt="해 질 녘의 협곡 거래소"></figure>
+      <aside class="garden-aside">
+        <div class="info-grid">
+          <div class="info-card"><b>SCARLET CROW</b><span>협곡을 지배하는 여왕과 그녀의 장부.</span></div>
+          <div class="info-card"><b>THE LEDGER</b><span>물, 치료, 판돈. 살아남은 대가가 기록된다.</span></div>
+          <div class="info-card"><b>THE PIT</b><span>협곡 바닥에 원형으로 파인 모래 구덩이.</span></div>
+          <div class="info-card"><b>THE QUEEN'S ROOM</b><span>물이 귀한 사막에서 향수 냄새가 나는 유일한 공간.</span></div>
+        </div>
+      </aside>
+    </div>
 
-  <p>셸터도 공동체도 아니다. 사람들은 물을 들고 와 거래하고, 빚지고, 붙잡힌다. 마신 물 한 컵도, 받은 치료도, 잃은 판돈도 전부 여왕의 장부에 적힌다. 빚을 갚는 방법은 둘뿐이다. 로즈가든을 위해 일하거나, 더 핏에 서거나.</p>
-  <p>TLS가 공포를 먹고 자란다는 사실을 이곳도 안다. 다만 쓰는 방향이 반대다. 함성과 피 냄새, 굶주림. 감염자를 모래 위에 세우고 겁을 주면 수치는 눈앞에서 치솟고, 관중은 사람이 괴물로 넘어가는 바로 그 순간에 돈을 건다.</p>
+    <div class="people-compact">
+      <div class="person lead-figure">
+        <div class="portrait"><img src="assets/image_08_5f225f65a0.jpg" alt="스칼렛 크로우"></div>
+        <div><div class="nm"><b>스칼렛 크로우</b><em>레드 마담 · 30대 중반</em></div><p>잘 웃고, 박수를 치고, 노래하듯 말한다. 기분이 좋을 때가 가장 위험하다. 선악을 모르는 것이 아니라 재미없다는 이유로 버렸다. 마음에 든 것은 이름을 새로 붙여 곁에 두고, 흥미를 잃는 순간 모래 위로 던진다.</p></div>
+      </div>
+      <div class="person">
+        <div class="portrait"><img src="assets/image_09_68d6a5ad95.jpg" alt="강아지"></div>
+        <div><div class="nm"><b>강아지</b><em>챔피언 · 본명 오티스 크로우</em></div><p>로즈가든의 옛 주인이자 그녀의 남편. 지금은 목에 쇠사슬을 차고 모래 위에 선다. 수치는 광폭화 직전에서 멈춰 있는데, 저절로 멈춘 것이 아니다. 경기 전에는 굶주림으로 끌어올리고, 끝나면 아내의 노랫소리로 끌어내린다.</p></div>
+      </div>
+    </div>
 
-  <div class="person lead-figure">
-    <div class="portrait"><img src="assets/image_08_5f225f65a0.jpg" alt="스칼렛 크로우"></div>
-    <div>
-    <div class="nm"><b>스칼렛 크로우</b><em>레드 마담 · 30대 중반</em></div>
-    <p>잘 웃고, 박수를 치고, 노래하듯 말한다. 기분이 좋을 때가 가장 위험하다. 선악을 모르는 것이 아니라 재미없다는 이유로 버렸다. 마음에 든 것은 이름을 새로 붙여 곁에 두고, 흥미를 잃는 순간 모래 위로 던진다.</p>
+    <figure class="banner tall garden-final-image"><img src="assets/image_10_64bd709997.jpg" alt="더 핏의 경기"></figure>
+
+    <div class="card-list garden-cards">
+      <div class="card"><b>더 핏</b><span>협곡 바닥에 원형으로 파인 모래 구덩이. 내려오는 계단은 있어도 올라가는 계단은 없다.</span></div>
+      <div class="card"><b>장부</b><span>공짜로 주어지는 것은 없다. 사막에서 건넨 물 한 컵도 적힌다.</span></div>
+      <div class="card"><b>여왕의 방</b><span>물이 귀한 사막에서 향수 냄새가 나는 유일한 공간. 향수는 마지막 한 병뿐이다.</span></div>
+      <div class="card"><b>단 하나의 규칙</b><span>여왕을 지루하게 하지 말 것.</span></div>
     </div>
   </div>
+</section>
 
-  <p class="quote">"살려 줘? 달링, 그건 부탁이 아니라 입찰이야. 뭘 걸 건데?"</p>
-
-  <div class="person">
-    <div class="portrait"><img src="assets/image_09_68d6a5ad95.jpg" alt="강아지"></div>
-    <div>
-    <div class="nm"><b>강아지</b><em>챔피언 · 본명 오티스 크로우</em></div>
-    <p>로즈가든의 옛 주인이자 그녀의 남편. 지금은 목에 쇠사슬을 차고 모래 위에 선다. 수치는 광폭화 직전에서 멈춰 있는데, 저절로 멈춘 것이 아니다. 경기 전에는 굶주림으로 끌어올리고, 끝나면 아내의 노랫소리로 끌어내린다.</p>
+<section id="signal">
+  <div class="wrap">
+    <div class="signal-head">
+      <p class="signal-kicker">INCOMING TRANSMISSION / 02</p>
+      <h2 class="signal-title">다음 신호를 기다리는 중</h2>
+      <p class="signal-copy">사막 어딘가에서 약한 신호가 잡힌다.<br>아직 위치는 특정되지 않았다.</p>
+    </div>
+    <div class="signal-terminal">
+      <div class="signal-core" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><div class="pulse"></div></div>
+      <div class="signal-log">
+        <div>SCANNING FREQUENCY . . . . . 87.4 MHz</div>
+        <div>TRIANGULATION . . . . . . . . WAIT</div>
+        <div>SOURCE . . . . . . . . . . . UNKNOWN</div>
+        <div id="log"></div>
+      </div>
+      <div class="signal-status">SIGNAL ACQUISITION IN PROGRESS</div>
     </div>
   </div>
-
-  <figure class="banner tall"><img src="assets/image_10_64bd709997.jpg" alt="더 핏의 경기"></figure>
-
-  <div class="card-list">
-    <div class="card"><b>더 핏</b><span>협곡 바닥에 원형으로 파인 모래 구덩이. 내려오는 계단은 있어도 올라가는 계단은 없다.</span></div>
-    <div class="card"><b>장부</b><span>공짜로 주어지는 것은 없다. 사막에서 건넨 물 한 컵도 적힌다.</span></div>
-    <div class="card"><b>여왕의 방</b><span>물이 귀한 사막에서 향수 냄새가 나는 유일한 공간. 향수는 마지막 한 병뿐이다.</span></div>
-    <div class="card"><b>단 하나의 규칙</b><span>여왕을 지루하게 하지 말 것.</span></div>
-  </div>
-</div></section>
-
-<section id="signal"><div class="wrap">
-  <p class="kicker">UNIDENTIFIED SIGNAL</p>
-  <h2 class="h2">세 번째 불빛</h2>
-  <p class="lead">정찰대가 북동쪽에서 잡아 온 신호다. 출처는 확인되지 않았고, 두 공동체 어느 쪽의 주파수도 아니다.</p>
-  <div class="signal-box">
-    <div class="spinner"></div>
-    <p class="sig-title">TRIANGULATING</p>
-    <div id="log"></div>
-  </div>
-</div></section>
+</section>
 
 <footer><div class="wrap">THE LONG SLEEP</div></footer>
 
@@ -784,5 +778,120 @@ function pushLine(){
 }
 pushLine();setInterval(pushLine,2600);
 </script>
+
+<style>
+/* =========================================================
+   FRONT SECTIONS — editorial redesign to match THE PIT
+   ========================================================= */
+:root{
+  --front-rule:rgba(51,39,31,.15);
+  --front-muted:rgba(51,39,31,.56);
+  --haven-ink:#26312f;
+  --haven-muted:rgba(38,49,47,.60);
+}
+.editorial-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px;border-bottom:1px solid var(--front-rule);padding-bottom:17px}
+.editorial-head .h2{margin-bottom:0}
+.editorial-head .kicker{margin-bottom:8px}
+.section-index{flex:none}
+
+/* QUIZ / DECISION — like an opening dossier */
+#quiz{background:#e9dfd5;padding-top:78px;padding-bottom:82px}
+#quiz .lead{font-size:13px;color:var(--front-muted);max-width:60em;margin-bottom:24px}
+#quiz .player{background:rgba(255,255,255,.34);border-color:rgba(51,39,31,.16);margin-bottom:20px}
+#quiz .quiz-card{border:0;border-top:1px solid rgba(51,39,31,.18);border-bottom:1px solid rgba(51,39,31,.18);background:transparent;padding:32px 0 0;grid-template-columns:minmax(0,1fr) 300px;gap:48px}
+#quiz .qcount{font-size:9px;letter-spacing:.2em}
+#quiz .qbar{height:1px;margin:0 0 28px;background:rgba(51,39,31,.18)}
+#quiz .qbar i{background:#9c5a4e}
+#quiz .qtext{font-size:clamp(21px,3vw,30px);font-weight:400;line-height:1.42;max-width:18em;letter-spacing:-.025em;margin-bottom:28px}
+#quiz .opts{gap:0;border-top:1px solid rgba(51,39,31,.12)}
+#quiz .opt{border:0;border-bottom:1px solid rgba(51,39,31,.12);border-left:0;background:transparent;padding:16px 6px 16px 0;font-size:13px;position:relative}
+#quiz .opt::before{content:'→';display:inline-block;width:26px;color:#9c5a4e;opacity:.7}
+#quiz .opt:hover,#quiz .opt:focus-visible{background:rgba(255,255,255,.28);padding-left:8px}
+#quiz .result{border-left:1px solid rgba(51,39,31,.14);padding-left:28px}
+#quiz .scale{height:7px;border:0;margin:18px 0 15px;gap:2px;background:transparent}
+#quiz .scale span{font-size:0;height:7px}
+#quiz .scale .s-h{background:#819a92}.s-r{background:#b46a5e!important}
+#quiz .verdict{font-size:23px;font-weight:400;letter-spacing:-.03em}
+#quiz #rdesc{font-size:12px;line-height:1.85;color:var(--front-muted)!important}
+#quiz .assign{border:0;border-top:1px solid rgba(51,39,31,.12);padding:14px 0 0;background:transparent}
+#quiz .assign dt{font-size:9px;color:rgba(51,39,31,.45)}
+#quiz .assign dd{font-size:12px;margin:2px 0 12px}
+#quiz .again{font-size:9px;text-transform:uppercase}
+
+/* PROFILE / IDENTITY */
+#profile{background:#f4ece4;padding-top:72px;padding-bottom:82px}
+#profile .lead{font-size:13px;color:var(--front-muted);margin-bottom:22px}
+#profile .tabs{border:0;border-bottom:1px solid var(--front-rule);gap:0}
+#profile .tabs button{flex:0 0 auto;min-width:150px;text-align:left;border:0;border-right:1px solid var(--front-rule);background:transparent;padding:13px 18px 13px 0;margin-right:18px;color:rgba(51,39,31,.42);font-size:9px;letter-spacing:.16em}
+#profile .tabs button[aria-selected=true]{background:transparent;color:var(--ink);font-weight:500;border-bottom:2px solid #9c5a4e}
+#profile .sheet{border:0;background:transparent;padding:26px 0 0;position:relative}
+#profile .sheet pre{font-size:11.5px;line-height:2.15;color:#3f332c;max-width:760px}
+#profile .sheet pre span[data-f]{color:#9c5a4e}
+#profile .sheet .copy,#profile .sheet .dice{border:1px solid rgba(51,39,31,.2);background:transparent;margin-top:22px;padding:8px 13px;font-size:9px;letter-spacing:.14em}
+#profile .sheet .dice{background:#33271f;color:#f4ece4;border-color:#33271f}
+
+/* WORLD / PATHOGEN — diagnostic board */
+#world{background:#f0e9e1;padding-top:76px;padding-bottom:86px}
+#world .lead{font-size:13px;color:var(--front-muted);margin-bottom:30px;max-width:58em}
+#world .pair{margin:0 0 32px;gap:1px;background:rgba(51,39,31,.13);border:1px solid rgba(51,39,31,.13)}
+#world .box{border:0;min-height:170px;background:rgba(255,255,255,.34);padding:20px;justify-content:flex-start}
+#world .box:first-child{background:rgba(79,111,104,.09)}
+#world .box:last-child{background:rgba(176,54,47,.08)}
+#world .box h3{font-size:9px;letter-spacing:.18em;margin-bottom:auto;color:rgba(51,39,31,.5)}
+#world .box p{font-size:13px;line-height:1.8;max-width:28em}
+#world .stages{border:0;background:linear-gradient(90deg,rgba(79,111,104,.08),rgba(255,255,255,.18) 45%,rgba(176,54,47,.10));overflow:hidden}
+#world .stages::before{display:none}
+#world .stage{grid-template-columns:105px 1fr;padding:19px 14px;border-bottom:1px solid rgba(51,39,31,.13)}
+#world .stage b{font-size:25px;font-weight:400;letter-spacing:-.05em;line-height:1}
+#world .stage span{font-size:12.5px;color:rgba(51,39,31,.68);align-self:center}
+#world > .wrap > p:not(.lead){font-size:12px;line-height:1.95;color:rgba(51,39,31,.58);max-width:65em}
+
+/* HAVEN / SHELTER — cool, institutional, image-led */
+#haven{background:#dfe5e2;color:var(--haven-ink);padding-top:78px;padding-bottom:88px}
+#haven .editorial-head{border-bottom-color:rgba(38,49,47,.18)}
+#haven .section-index,#haven .kicker{color:rgba(38,49,47,.46)}
+#haven .lead{font-size:13px;color:var(--haven-muted);max-width:62em;margin-bottom:28px}
+#haven .player{border-color:rgba(38,49,47,.17);background:rgba(255,255,255,.28);margin-bottom:20px}
+#haven .banner{border:0;margin:0 0 26px;position:relative}
+#haven .banner img{height:clamp(220px,34vw,390px);filter:saturate(.72) contrast(.96);object-position:center}
+#haven .banner figcaption{position:absolute;left:12px;bottom:10px;background:rgba(223,229,226,.82);color:rgba(38,49,47,.55);padding:5px 8px;border:0;font-size:8px}
+#haven > .wrap > p:not(.lead){font-size:12.5px;color:rgba(38,49,47,.68);max-width:64em;line-height:1.9;margin:0 0 34px}
+#haven .person{grid-template-columns:92px 1fr;padding:20px 0;border-bottom:1px solid rgba(38,49,47,.13)}
+#haven .person.lead-figure{border-left:2px solid #4f6f68;padding-left:15px}
+#haven .portrait{border-color:rgba(38,49,47,.16);background:#d4ddda}
+#haven .person .nm b{font-size:16px;color:#26312f}
+#haven .person .nm em{color:rgba(38,49,47,.44)}
+#haven .person p{font-size:12.5px;line-height:1.85;color:rgba(38,49,47,.68)}
+#haven .quote{border-left-color:#4f6f68;color:#31443f;font-size:15px;margin:26px 0 32px;padding-left:16px}
+#haven .card-list{margin-top:34px;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(38,49,47,.13);border:1px solid rgba(38,49,47,.13)}
+#haven .card{border:0;background:rgba(255,255,255,.28);min-height:145px;padding:17px}
+#haven .card b{font-size:9px;letter-spacing:.16em;color:rgba(38,49,47,.56)}
+#haven .card span{font-size:11.5px;line-height:1.8;color:rgba(38,49,47,.63)}
+#haven .banner + p + .person{margin-top:8px}
+
+/* global image / rhythm refinements */
+.banner img{transition:filter .25s,transform .5s}
+.banner:hover img{transform:scale(1.01)}
+@media(min-width:761px){
+  #haven .person{grid-template-columns:100px 1fr}
+  #haven .person:not(.lead-figure) .portrait{aspect-ratio:1/1}
+}
+@media(max-width:760px){
+  .editorial-head{align-items:flex-start}
+  .section-index{padding-top:5px}
+  #quiz .quiz-card{grid-template-columns:1fr;gap:26px}
+  #quiz .result{border-left:0;border-top:1px solid rgba(51,39,31,.14);padding:24px 0 0}
+  #world .stage{grid-template-columns:78px 1fr}
+  #haven .card-list{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .editorial-head{display:block}
+  .section-index{margin-top:10px}
+  #profile .tabs button{min-width:0;margin-right:12px;padding-right:12px}
+  #haven .card-list{grid-template-columns:1fr}
+  #haven .person{grid-template-columns:70px 1fr;gap:13px}
+}
+</style>
+
 </body>
 </html>
